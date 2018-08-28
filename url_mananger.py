@@ -1,8 +1,10 @@
 class UrlManager(object):
     
     def __init__(self):
+        # 使用set存储URL，防止重复
         self.new_urls = set()
         self.old_urls = set()
+
     # 添加单个URL
     def add_new_url(self, url):
         # 检查
