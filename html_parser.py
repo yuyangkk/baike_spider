@@ -7,12 +7,16 @@ class HtmlParser(object):
 
     @staticmethod
     def _get_new_urls(soup, page_url):
-        # /item/Python/407313
+        # /item/Python/407313，网页URL相对路径
+        # new_urls 用于存放提取出来的新URL的集合，集合内不会存在相同元素
         new_urls = set()
+        # links 是通过BeatifulSoup find_all按照一定的规则获取到的所有link，find_all方法查询所有符合条件的
         links = soup.find_all('a', href=re.compile(r'/item/\w+/\d+'))
         for link in links:
             new_url = link['href']
+            # 拼接全路径
             new_full_url = urljoin(page_url, new_url)
+            # 向集合中添加拼接后的全路径
             new_urls.add(new_full_url)
             print('page_url: %s, link: %s, new_url: %s, full_url: %s' % (page_url, link, new_url, new_full_url))
         return new_urls

@@ -7,6 +7,7 @@ import html_output
 class SpiderMain(object):
 
     def __init__(self):
+        # 实例化属性
         self.urls = url_mananger.UrlManager()
         self.downloader = html_download.HtmlDownloader()
         self.parser = html_parser.HtmlParser()
@@ -32,7 +33,7 @@ class SpiderMain(object):
                 # 将解析出来的数据保存到outputer中
                 self.outputer.collect_data(new_data)
 
-                # 只爬取1000条数据
+                # 只爬取100条数据
                 if count == 100:
                     break
                 count = count + 1

@@ -14,9 +14,10 @@ class HtmlDownloader(object):
         # 下载URL中的数据
         if url is None:
             return
-
+        # 打开URL对应的数据
         with request.urlopen(url) as f:
             if f.getcode() != 200:
                 print('请求失败')
                 return None
+            # 读取数据，并以utf-8的编码格式返回
             return f.read().decode('utf-8')

@@ -7,9 +7,10 @@ class UrlManager(object):
 
     # 添加单个URL
     def add_new_url(self, url):
-        # 检查
+        # 检查是否为空
         if url is None:
             return
+        # 检查是否已经添加到待爬取和未爬取集合中，若在return
         if url in self.new_urls and url in self.old_urls:
             return
         else:
